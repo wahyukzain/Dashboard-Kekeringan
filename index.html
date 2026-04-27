@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DroughtMap Edu - Portal Edukasi & Pemantauan Kekeringan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@500;600;700&family=Orbitron:wght@700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="landing.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="landing-header">
+        <div class="brand">
+            <div style="display:flex; align-items:center; gap:8px;">
+                <span class="globe-icon" style="font-size: 1.6rem; animation: spinGlobe 12s linear infinite; filter: drop-shadow(0 0 8px rgba(0, 242, 255, 0.6));">🌍</span>
+                <span class="brand-text">DroughtMap Edu</span>
+            </div>
+        </div>
+
+        <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center;">
+            <img src="assets/images/Logo.png" alt="Afiliasi Logo" style="height: 140px; width: auto; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">
+        </div>
+            <nav style="display:flex; gap:24px; align-items:center;">
+                <a href="petunjuk.html" style="color:#f1f5f9; text-decoration:none; font-size:1rem; font-weight:500; font-family:'Inter',sans-serif; transition:color 0.3s ease;" onmouseover="this.style.color='#00bcd4'" onmouseout="this.style.color='#f1f5f9'">Petunjuk Penggunaan</a>
+                <a href="tentang.html" style="color:#f1f5f9; text-decoration:none; font-size:1rem; font-weight:500; font-family:'Inter',sans-serif; transition:color 0.3s ease;" onmouseover="this.style.color='#00bcd4'" onmouseout="this.style.color='#f1f5f9'">Tentang</a>
+            </nav>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+            <div class="hero-bg-wrapper">
+                <img src="assets/images/hero-bg.png" alt="Drought Landscape" class="hero-bg">
+                <div class="hero-overlay"></div>
+            </div>
+
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="highlight">Teknologi Geospatial</span><br>
+                    untuk Mitigasi Kekeringan:<br>
+                    Solusi Cerdas untuk <span class="highlight">Masa Depan</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Platform edukasi interaktif berbasis data geospasial untuk analisis dan mitigasi bencana kekeringan
+                    di Indonesia.
+                </p>
+                <div class="hero-actions">
+                    <a href="#features" class="btn-primary">Mulai Belajar</a>
+                    <a href="dashboard.html" class="btn-secondary">Lihat Peta Langsung</a>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <!-- <span>Scroll untuk jelajahi</span> -->
+            </div>
+        </section>
+
+        <!-- FEATURES SECTION -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2 class="section-title">Fitur Utama</h2>
+                <div class="features-grid">
+
+                    <!-- Card 1: Materi -->
+                    <a href="materi.html" class="feature-card" data-aos="fade-up">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-book-open-reader"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Materi Edukasi</h3>
+                            <p>Pelajari konsep dasar, penyebab, dan dampak kekeringan secara komprehensif.</p>
+                        </div>
+                        <div class="card-action">
+                            <span>Buka Materi</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </a>
+
+                    <!-- Card 2: Evaluasi -->
+                    <a href="evaluasi.html" class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-clipboard-question"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Evaluasi & Kuis</h3>
+                            <p>Uji pemahamanmu dengan soal-soal interaktif yang menantang.</p>
+                        </div>
+                        <div class="card-action">
+                            <span>Mulai Evaluasi</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </a>
+
+                    <!-- Card 3: Peta Dashboard (Special) -->
+                    <a href="dashboard.html" class="feature-card map-feature-card" data-aos="fade-up"
+                        data-aos-delay="200">
+                        <!-- Animated Map Background for this card -->
+                        <div class="map-card-bg">
+                            <img src="assets/images/map-card.png" alt="Global Map Data">
+                            <div class="map-scan-line"></div>
+                            <div class="map-pulse"></div>
+                        </div>
+
+                        <div class="card-content relative-z">
+                            <h3>Dashboard Peta</h3>
+                            <p>Analisis data kekeringan real-time menggunakan citra satelit Landsat & MODIS.</p>
+                        </div>
+                        <div class="card-status">
+                            <span class="status-dot"></span> Live Data
+                        </div>
+                    </a>
+
+
+                    <!-- Card 4: Tentang -->
+                    <a href="tentang.html" class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Tentang</h3>
+                            <p>Kenali tujuan pembelajaran, capaian, dan tim pengembang di balik DroughtMap Edu.</p>
+                        </div>
+                        <div class="card-action">
+                            <span>Lihat Tentang</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </a>
+
+                    <!-- Card 5: Petunjuk Penggunaan -->
+                    <a href="petunjuk.html" class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Petunjuk Penggunaan</h3>
+                            <p>Panduan interaktif cara menggunakan fitur zoom gambar, kuis, dan interaksi dashboard peta.</p>
+                        </div>
+                        <div class="card-action">
+                            <span>Lihat Petunjuk</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 DroughtMap Edu. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Simple Script for potential interactions -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

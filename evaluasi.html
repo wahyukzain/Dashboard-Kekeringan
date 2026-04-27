@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluasi - DroughtMap Edu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@500;600;700&family=Orbitron:wght@700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background Elements */
+        .bg-decoration {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 188, 212, 0.1), transparent);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 5s;
+        }
+
+        .circle-3 {
+            width: 250px;
+            height: 250px;
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 10s;
+        }
+
+        /* Header */
+        .eval-header {
+            position: relative;
+            z-index: 10;
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-text {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-5px);
+            border-color: var(--accent-color);
+        }
+
+        /* Main Content */
+        .eval-container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .eval-title {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .eval-title h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(0, 188, 212, 0.3);
+        }
+
+        .eval-title .highlight {
+            color: var(--accent-color);
+        }
+
+        .eval-subtitle {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* Cards Grid */
+        .eval-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 2rem;
+        }
+
+        .eval-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .eval-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 188, 212, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .eval-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: 0 30px 60px rgba(0, 188, 212, 0.2);
+        }
+
+        .eval-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-color), #0891b2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .eval-card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-content h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .card-content p {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .eval-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--accent-color), #0891b2);
+            color: #0f172a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .eval-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+
+        .eval-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .eval-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 188, 212, 0.5);
+        }
+
+        .eval-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .eval-btn i {
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .eval-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Badge */
+        .card-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            border: 1px solid rgba(0, 188, 212, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Animations */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(20px, -20px);
+            }
+
+            50% {
+                transform: translate(-10px, 10px);
+            }
+
+            75% {
+                transform: translate(15px, 5px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .eval-title,
+        .eval-subtitle,
+        .eval-card {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .eval-card:nth-child(1) {
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+
+        .eval-card:nth-child(2) {
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .eval-title h1 {
+                font-size: 2rem;
+            }
+
+            .eval-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .eval-header {
+                padding: 1.5rem;
+            }
+
+            .brand-text {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Decoration -->
+    <div class="bg-decoration">
+        <div class="floating-circle circle-1"></div>
+        <div class="floating-circle circle-2"></div>
+        <div class="floating-circle circle-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="eval-header">
+        <div class="brand">
+            <span class="globe-icon">🌍</span>
+            <span class="brand-text">DroughtMap Edu</span>
+        </div>
+        <a href="index.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Kembali</span>
+        </a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="eval-container">
+        <div class="eval-title">
+            <h1>Evaluasi <span class="highlight">Pembelajaran</span></h1>
+        </div>
+        <p class="eval-subtitle">
+            Uji pemahaman Anda tentang materi kekeringan dengan mengikuti Pre-test dan Post-test. Evaluasi ini akan
+            membantu mengukur peningkatan pengetahuan Anda.
+        </p>
+
+        <div class="eval-grid">
+            <!-- Pre-test Card -->
+            <div class="eval-card">
+                <div class="card-badge">Sebelum Belajar</div>
+                <div class="card-icon">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                </div>
+                <div class="card-content">
+                    <h2>Pre-Test</h2>
+                    <p>Mulai dengan Pre-test untuk mengukur pengetahuan awal Anda tentang fenomena kekeringan dan
+                        teknologi geospasial sebelum mempelajari materi.</p>
+                    <a href="https://forms.gle/DXczJG2tMoZYUo8c6" target="_blank" class="eval-btn">
+                        <span>Mulai Pre-Test</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Post-test Card -->
+            <div class="eval-card">
+                <div class="card-badge">Setelah Belajar</div>
+                <div class="card-icon">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                </div>
+                <div class="card-content">
+                    <h2>Post-Test</h2>
+                    <p>Setelah mempelajari materi, ikuti Post-test untuk mengukur peningkatan pemahaman Anda dan melihat
+                        seberapa banyak pengetahuan yang telah Anda peroleh.</p>
+                    <a href="https://forms.gle/SL1wMs2QZ9svJnMEA" target="_blank" class="eval-btn">
+                        <span>Mulai Post-Test</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

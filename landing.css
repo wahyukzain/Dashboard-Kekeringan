@@ -1,0 +1,452 @@
+/* Landing Page Specific Styles */
+
+/* Reuse variables from styles.css where possible, but override for landing drama */
+:root {
+    --hero-overlay: linear-gradient(to bottom, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.9));
+    --card-bg: rgba(255, 255, 255, 0.05);
+    /* Dark theme glass */
+    --card-border: rgba(255, 255, 255, 0.1);
+    --primary-glow: #00bcd4;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: #0f172a;
+    /* Fallback dark */
+    color: #fff;
+}
+
+/* NAVBAR Override/Adjustment */
+.landing-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 2rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-text {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+    background: none;
+    /* Override styles.css gradient if needed, or keep it */
+}
+
+/* HERO SECTION */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
+.hero-bg-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.hero-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: slowZoom 20s infinite alternate;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--hero-overlay);
+}
+
+.hero-content {
+    max-width: 800px;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards 0.5s;
+}
+
+.hero-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 3rem;
+    /* Reduced from 4rem */
+    line-height: 1.3;
+    /* Increased line height for 3 lines */
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-title .highlight {
+    color: var(--accent-color);
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #cbd5e1;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-primary {
+    background: var(--accent-color);
+    color: #0f172a;
+    box-shadow: 0 0 20px rgba(0, 188, 212, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(0, 188, 212, 0.6);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    backdrop-filter: blur(5px);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.7;
+    animation: float 3s ease-in-out infinite;
+}
+
+.mouse {
+    width: 30px;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    position: relative;
+}
+
+.wheel {
+    width: 4px;
+    height: 8px;
+    background: #fff;
+    border-radius: 2px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollWheel 2s infinite;
+}
+
+/* FEATURES SECTION */
+.features-section {
+    padding: 100px 20px;
+    background: #0f172a;
+    /* Dark background matches bottom of gradient */
+    position: relative;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Feature Cards */
+.feature-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 188, 212, 0.1);
+    border-color: var(--accent-color);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.feature-card:hover .card-icon {
+    transform: scale(1.1);
+}
+
+.card-content h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.card-action {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.card-action i {
+    transition: transform 0.3s;
+}
+
+.feature-card:hover .card-action i {
+    transform: translateX(5px);
+}
+
+/* SPECIAL MAP CARD STYLES */
+.map-feature-card {
+    background: #000;
+    /* Darker base */
+    grid-column: span 1;
+}
+
+@media (min-width: 992px) {
+    /* Make map card larger if needed, or keep uniform */
+}
+
+.map-card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+}
+
+.map-feature-card:hover .map-card-bg {
+    opacity: 0.6;
+}
+
+.map-card-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Map Animation: Scanning Line */
+.map-scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(0, 188, 212, 0.5), transparent);
+    background-size: 100% 10px;
+    background-repeat: no-repeat;
+    animation: scanMap 4s linear infinite;
+    opacity: 0.5;
+}
+
+/* Relative Z for content above map bg */
+.relative-z {
+    position: relative;
+    z-index: 2;
+}
+
+.card-status {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #333;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #ef4444;
+    /* Red for live/alert or Green for active? Blue for tech. Let's use Red for 'Live' */
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ef4444;
+    animation: pulse 1.5s infinite;
+}
+
+/* Animations */
+@keyframes slowZoom {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes scrollWheel {
+    0% {
+        top: 8px;
+        opacity: 1;
+    }
+
+    100% {
+        top: 30px;
+        opacity: 0;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        transform: translate(-50%, 10px);
+    }
+}
+
+@keyframes scanMap {
+    0% {
+        background-position: 0 -10%;
+    }
+
+    100% {
+        background-position: 0 110%;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .landing-header {
+        padding: 1.5rem;
+    }
+}

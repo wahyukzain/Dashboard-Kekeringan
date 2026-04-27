@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pemantauan Kekeringan Real-Time (NDDI Model)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&family=Orbitron:wght@700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description"
+        content="Dashboard profesional pemantauan kekeringan menggunakan model NDDI dengan data satelit Landsat/MODIS.">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <h1 class="animated-title">
+                <span class="globe-icon">🌍</span>
+                <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                    <span class="brand-name">DroughtMap Edu</span>
+                    <span class="separator">|</span>
+                    <span class="title-text">Peta Edukasi Pemantauan Kekeringan Berbasis Data Geospasial</span>
+                </a>
+            </h1>
+            <!-- Subtitle optional or removed since title is long/detailed now, let's keep it specific but simple -->
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <!-- Instruction Strip -->
+        <div class="instruction-strip" style="display: flex; flex-direction: column; align-items: flex-start; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span class="info-icon">ℹ️</span>
+                <p style="margin: 0;">Pilih Tahun dan Bulan pada panel di sebelah kiri peta untuk memulai analisis.</p>
+            </div>
+            <div style="background: #f8f9fa; border-left: 4px solid var(--accent-color); padding: 12px 15px; border-radius: 6px; width: 100%;">
+                <p style="margin: 0; font-size: 0.95rem; color: #333;">
+                    📺 <strong>Panduan Penggunaan:</strong> Silakan tonton <a href="https://drive.google.com/file/d/1-YXhgEIrfnISMhp_hjowE7Oq53tfXzSQ/view?usp=drive_link" target="_blank" style="color: var(--accent-color); text-decoration: underline; font-weight: 600;">Video Tutorial Mengaplikasikan Peta</a> sebelum memulai analisis.
+                </p>
+                <p style="margin: 8px 0 0 0; font-size: 0.9rem; color: #d32f2f; font-weight: 500;">
+                    ⚠️ Jika peta tidak muncul, silahkan lakukan refresh web.
+                </p>
+            </div>
+        </div>
+
+        <!-- Glassmorphism Container for Iframe -->
+        <section class="iframe-wrapper">
+            <div class="glass-container">
+                <iframe src="https://ee-kurniawanwahyu669.projects.earthengine.app/view/dashboard-kekeringan"
+                    frameborder="0" allowfullscreen title="Google Earth Engine Dashboard">
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Methodology Section (Hidden on desktop for 1-page view, Visible on Mobile via CSS) -->
+        <section class="methodology">
+            <h2>Metodologi</h2>
+            <p>
+                Platform ini menggunakan citra satelit <strong>Landsat</strong> dan <strong>MODIS</strong> yang diproses
+                melalui
+                <strong>Google Earth Engine</strong> untuk menghitung indeks kekeringan menggunakan model <em>Normalized
+                    Difference Drought Index (NDDI)</em>.
+            </p>
+        </section>
+
+        <div class="footer-info">
+            Data Source: Landsat/MODIS via Google Earth Engine | NDDI Model
+        </div>
+    </main>
+
+</body>
+
+</html>

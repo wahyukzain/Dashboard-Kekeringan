@@ -1,0 +1,321 @@
+:root {
+    --primary-color: #1a2530;
+    /* Darker, more professional slate */
+    --accent-color: #00bcd4;
+    /* Cyan for geospatial/tech vibe */
+    --text-color: #333;
+    --bg-gradient-start: #f4f7f6;
+    --bg-gradient-end: #e2e6ea;
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    /* Whiter, cleaner like the reference */
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    /* Softer shadow */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+.main-header {
+    background-color: rgba(15, 23, 42, 0.95);
+    /* Slightly more opaque for text clarity */
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    border-bottom: 2px solid var(--accent-color);
+    flex-shrink: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+}
+
+.header-content {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    /* Precise Left Alignment */
+    align-items: center;
+}
+
+.main-header h1 {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 0;
+}
+
+.title-wrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Brand Name - The "Logo" */
+.brand-name {
+    font-family: 'Orbitron', sans-serif;
+    /* Tech/Sci-Fi Font */
+    font-weight: 900;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    /* Premium Orange Gradient Texture */
+    background: linear-gradient(to right, #ff9f43, #ffc85e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* Makes the gradient show through */
+
+    /* Sharp Shadow for Clarity */
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+
+    white-space: nowrap;
+}
+
+.separator {
+    font-size: 1.8rem;
+    color: #475569;
+    font-weight: 300;
+    margin-bottom: 4px;
+    /* Visual adjustment */
+}
+
+.title-text {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #e2e8f0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    /* Ensures distinct text against dark bg */
+}
+
+/* Animations */
+.animated-title {
+    animation: slideInLeft 0.8s ease-out forwards;
+    /* Changed to slide from left for "presisi kiri" vibe */
+}
+
+.globe-icon {
+    display: inline-block;
+    font-size: 2rem;
+    animation: spinGlobe 12s linear infinite;
+    filter: drop-shadow(0 0 8px rgba(0, 242, 255, 0.6));
+    margin-right: 5px;
+}
+
+@keyframes spinGlobe {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotateGlobe {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes underlineExpand {
+    to {
+        width: 100%;
+    }
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Instruction Strip */
+.instruction-strip {
+    background: #ffffff;
+    border-left: 5px solid var(--accent-color);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #2c3e50;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s;
+}
+
+.instruction-strip:hover {
+    transform: translateX(5px);
+}
+
+.info-icon {
+    color: var(--accent-color);
+    font-size: 1.4rem;
+}
+
+/* Iframe Wrapper & Glassmorphism */
+.iframe-wrapper {
+    width: 100%;
+    height: 85vh;
+    min-height: 800px;
+    display: flex;
+    justify-content: center;
+}
+
+.glass-container {
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    /* Cleaner background to match reference */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    /* More professional box shadow */
+    border-radius: 12px;
+    /* Slightly squarer corners for professionalism */
+    border: 1px solid #e0e0e0;
+    padding: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.glass-container:hover {
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    display: block;
+    background: #f8f9fa;
+    /* Loading placeholder color */
+}
+
+/* Methodology Section */
+.methodology {
+    margin-top: 20px;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+    border-top: 4px solid var(--primary-color);
+}
+
+.methodology h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+}
+
+.methodology h2::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 24px;
+    background: var(--accent-color);
+    margin-right: 12px;
+    border-radius: 2px;
+}
+
+.methodology p {
+    font-size: 1rem;
+    color: #555;
+    max-width: 900px;
+    line-height: 1.7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-header {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .header-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-header h1 {
+        font-size: 1.6rem;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .iframe-wrapper {
+        height: 80vh;
+        min-height: 500px;
+    }
+
+    .glass-container {
+        padding: 8px;
+    }
+}

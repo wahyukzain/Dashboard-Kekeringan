@@ -1,0 +1,518 @@
+/* ===== PETUNJUK PAGE STYLES ===== */
+:root {
+    --bg-dark: #0f172a;
+    --bg-darker: #0b1120;
+    --accent: #00bcd4;
+    --accent-glow: rgba(0, 188, 212, 0.4);
+    --accent-subtle: rgba(0, 188, 212, 0.1);
+    --card-bg: #1e293b;
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ===== HEADER ===== */
+.petunjuk-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.brand-link .globe-icon {
+    font-size: 1.6rem;
+    animation: spinGlobe 12s linear infinite;
+    filter: drop-shadow(0 0 8px rgba(0, 242, 255, 0.6));
+}
+
+.brand-link .brand-text {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+}
+
+.header-nav {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.nav-link:hover {
+    color: var(--accent);
+    background: var(--accent-subtle);
+}
+
+.nav-link.active {
+    color: var(--accent);
+    background: var(--accent-subtle);
+    border: 1px solid rgba(0, 188, 212, 0.2);
+}
+
+/* ===== HERO SECTION ===== */
+.petunjuk-hero {
+    position: relative;
+    height: 40vh;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 120%, rgba(0, 188, 212, 0.15) 0%, transparent 60%),
+                var(--bg-dark);
+    margin-top: 70px; /* offset for fixed header */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.page-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+}
+
+.page-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ===== GUIDE SECTION ===== */
+.guide-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.guide-card {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.guide-card.reverse {
+    flex-direction: row-reverse;
+}
+
+.guide-content {
+    flex: 1;
+}
+
+.guide-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-subtle);
+    color: var(--accent);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 188, 212, 0.2);
+}
+
+.guide-content h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+.guide-content p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 24px;
+    line-height: 1.8;
+}
+
+.guide-steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.guide-steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.guide-steps li > span:first-child {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: var(--card-bg);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.guide-steps li strong {
+    color: var(--text-primary);
+}
+
+/* ===== VISUAL DEMO BOXES ===== */
+.guide-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.demo-box {
+    width: 100%;
+    max-width: 450px;
+    height: 300px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 1px solid var(--card-border);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Animations for Cursor */
+.animated-cursor {
+    position: absolute;
+    font-size: 1.5rem;
+    color: #fff;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    z-index: 10;
+    pointer-events: none;
+}
+
+.animated-cursor i {
+    transform: rotate(-15deg);
+}
+
+.cursor-ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: rgba(0, 188, 212, 0.5);
+    border-radius: 50%;
+    opacity: 0;
+}
+
+/* 1. Zoom Demo */
+.zoom-demo .demo-img {
+    width: 80%;
+    border-radius: 8px;
+    transition: transform 0.5s ease;
+}
+
+.click-zoom-cursor {
+    animation: zoomAction 5s infinite;
+}
+
+.click-zoom-cursor .cursor-ripple {
+    animation: rippleEffect 5s infinite;
+}
+
+@keyframes zoomAction {
+    0% { top: 80%; left: 80%; }
+    20% { top: 50%; left: 50%; transform: scale(1); }
+    25% { transform: scale(0.9); }
+    30% { transform: scale(1); }
+    50% { top: 50%; left: 50%; }
+    70% { top: 30%; left: 70%; }
+    100% { top: 80%; left: 80%; }
+}
+
+@keyframes rippleEffect {
+    0%, 24% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+    25% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    35% { opacity: 0; transform: translate(-50%, -50%) scale(3); }
+    100% { opacity: 0; }
+}
+
+/* Image Scale Sync with Cursor */
+.zoom-demo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    animation: imgZoom 5s infinite;
+    pointer-events: none;
+}
+
+@keyframes imgZoom {
+    0%, 25% { backdrop-filter: blur(0); background: transparent; }
+    30%, 70% { backdrop-filter: blur(2px); background: rgba(0,0,0,0.4); }
+    75%, 100% { backdrop-filter: blur(0); background: transparent; }
+}
+
+/* 2. Card Demo */
+.card-demo {
+    background: var(--bg-dark);
+}
+.mock-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 20px;
+    border-radius: 12px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s;
+    position: relative;
+}
+.mock-icon {
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+.mock-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.mock-dropdown {
+    margin-left: auto;
+    transition: transform 0.3s;
+}
+
+.click-card-cursor {
+    animation: cardAction 4s infinite;
+}
+
+@keyframes cardAction {
+    0% { top: 80%; left: 80%; }
+    20% { top: 60%; left: 50%; }
+    25% { transform: scale(0.9); }
+    30% { transform: scale(1); }
+    35% { top: 70%; left: 50%; } /* Hover effect simulation */
+    100% { top: 80%; left: 80%; }
+}
+
+/* 3. Map Demo */
+.map-demo {
+    background: #1e293b;
+}
+.mock-map {
+    width: 100%;
+    height: 100%;
+    background: url('assets/images/java-maps-combined.png') center/cover;
+    opacity: 0.6;
+    position: relative;
+}
+.mock-map-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.mock-map-controls div {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+}
+
+.drag-map-cursor {
+    animation: dragAction 6s infinite;
+}
+
+@keyframes dragAction {
+    0% { top: 70%; left: 70%; }
+    20% { top: 50%; left: 50%; transform: scale(1); }
+    25% { transform: scale(0.9); } /* Click down */
+    45% { top: 30%; left: 30%; transform: scale(0.9); } /* Drag */
+    50% { transform: scale(1); } /* Release */
+    70% { top: 20px; left: calc(100% - 35px); transform: scale(1); } /* Move to controls */
+    75% { transform: scale(0.9); } /* Click + */
+    80% { transform: scale(1); }
+    100% { top: 70%; left: 70%; }
+}
+
+/* 4. Quiz Demo */
+.mock-quiz {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.mock-question {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.mock-option {
+    padding: 12px 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+.mock-option.active-animation {
+    background: rgba(0, 188, 212, 0.2);
+    border-color: var(--accent);
+}
+
+.mock-option:nth-child(3) {
+    animation: optionHighlight 4s infinite;
+}
+
+@keyframes optionHighlight {
+    0%, 24% { background: rgba(255,255,255,0.05); border-color: var(--card-border); }
+    25%, 100% { background: rgba(0, 188, 212, 0.2); border-color: var(--accent); }
+}
+
+.click-quiz-cursor {
+    animation: quizAction 4s infinite;
+}
+
+.click-quiz-cursor .cursor-ripple {
+    animation: rippleEffectQuiz 4s infinite;
+}
+
+@keyframes quizAction {
+    0% { top: 90%; left: 80%; }
+    20% { top: 55%; left: 30%; transform: scale(1); } /* Move to option 2 */
+    25% { transform: scale(0.9); }
+    30% { transform: scale(1); }
+    100% { top: 90%; left: 80%; }
+}
+
+@keyframes rippleEffectQuiz {
+    0%, 24% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+    25% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    35% { opacity: 0; transform: translate(-50%, -50%) scale(3); }
+    100% { opacity: 0; }
+}
+
+/* ===== FOOTER ===== */
+.petunjuk-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 24px 20px;
+    text-align: center;
+}
+
+.petunjuk-footer p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes spinGlobe {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .guide-card, .guide-card.reverse {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .guide-visual {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-inner {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .page-title {
+        font-size: 2.2rem;
+    }
+
+    .petunjuk-hero {
+        height: auto;
+        padding: 40px 20px;
+        margin-top: 100px;
+    }
+}
